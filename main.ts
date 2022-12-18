@@ -1,33 +1,39 @@
+let button_pressed = false
+let start = 0
+let end = 0
 let beep = 0
+
+function new_round() {
     beep = randint(500, 5000)
     music.playTone(Note.C, beep)
-
-let start_time = 0
-let end_time = 0
-let get_input = () => {
-    return input.buttonIsPressed(Button.A)}
-
-let score = (time: number) => {
-    console.log(beep)
-    console.log(time)
-    if (Math.abs(beep - time) < 2000) {
-    basic.showString ("Dobre", 100)}
-    else (basic.showString ("Vedle", 100 ))}
-
-let Button_pressed = () => {
-    start_time = control.millis()}
-let Button_realised = () => {
-    end_time = control.millis()
-    score((end_time - start_time))}
- let ButtonisPressed = false
- while (true) {
-     if (input.buttonIsPressed(Button.A)){
-        if (!ButtonisPressed){
-        Button_pressed  }
-ButtonisPressed = true}
-else {
-    if (ButtonisPressed){
-        Button_realised()
-    }
-    ButtonisPressed = false}
+    button_pressed = true
+    console.log (beep)
 }
+while (button_pressed = true)
+    if (input.buttonIsPressed(Button.A)) {
+        start = control.millis()
+    }
+if (!input.buttonIsPressed(Button.A)) {
+    end = control.millis()
+}
+let time = Math.abs(end - start)
+let score = Math.abs (time - beep)
+if (score < 500) {
+    basic.showLeds(`
+            . . . . .
+            . . . . #
+            . . . # .
+            # . # . .
+            . # . . .
+            `)
+}
+else {
+    basic.showLeds(`
+            # . . . #
+            . # . # .
+            . . # . .
+            . # . # .
+            # . . . #
+            `)
+}
+new_round()
